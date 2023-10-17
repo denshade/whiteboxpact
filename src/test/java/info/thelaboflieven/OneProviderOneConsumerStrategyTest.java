@@ -1,5 +1,6 @@
 package info.thelaboflieven;
 
+import info.thelaboflieven.memorydaos.MemoryDAOFactory;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ class OneProviderOneConsumerStrategyTest {
 
     @Test
     void confirmPactVerified() throws SQLException {
-        var lib = mock(PactLib.class);
+        var lib = new PactLib(new MemoryDAOFactory());
         var strategy = new OneProviderOneConsumerStrategy(lib);
         strategy.confirmPactVerified(new Product(1, "product"), new Pact(1, new Timestamp(new Date().getTime()), "{expect}"), "version");
         //verify(lib).

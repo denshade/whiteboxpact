@@ -8,7 +8,7 @@ import info.thelaboflieven.sqldao.DAOFactory;
 
 import java.sql.Connection;
 public class MemoryDAOFactory implements DAOFactory {
-    MemoryDAOFactory() {
+    public MemoryDAOFactory() {
         productDAO = new ProductDAO();
         productEnvironmentDAO = new ProductEnvironmentDAO();
         pactDAO = new PactDAO();
