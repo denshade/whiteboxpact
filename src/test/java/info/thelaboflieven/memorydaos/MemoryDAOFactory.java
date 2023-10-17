@@ -4,14 +4,15 @@ import info.thelaboflieven.PactRepository;
 import info.thelaboflieven.ProductEnvironmentRepository;
 import info.thelaboflieven.ProductRepository;
 import info.thelaboflieven.SupportedPactRepository;
+import info.thelaboflieven.sqldao.DAOFactory;
 
 import java.sql.Connection;
-public class SQLDAOFactory implements DAOFactory {
-    SQLDAOFactory(Connection connection) {
-        productDAO = new ProductDAO(connection);
-        productEnvironmentDAO = new ProductEnvironmentDAO(connection);
-        pactDAO = new PactDAO(connection);
-        supportedPactDAO = new SupportedPactDAO(connection);
+public class MemoryDAOFactory implements DAOFactory {
+    MemoryDAOFactory() {
+        productDAO = new ProductDAO();
+        productEnvironmentDAO = new ProductEnvironmentDAO();
+        pactDAO = new PactDAO();
+        supportedPactDAO = new SupportedPactDAO();
     }
     private ProductRepository productDAO;
     private ProductEnvironmentRepository productEnvironmentDAO;
