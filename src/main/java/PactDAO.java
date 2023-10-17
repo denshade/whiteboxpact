@@ -6,13 +6,14 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PactDAO {
+public class PactDAO implements PactRepositry {
     private Connection connection;
 
     public PactDAO(Connection connection) {
         this.connection = connection;
     }
 
+    @Override
     public void createPact(Pact pact) throws SQLException {
         String insertQuery = "INSERT INTO pact (creationDate, payload) VALUES (?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
@@ -22,6 +23,7 @@ public class PactDAO {
         }
     }
 
+    @Override
     public Pact getPactById(int pactId) throws SQLException {
         String selectQuery = "SELECT * FROM pact WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
@@ -38,6 +40,7 @@ public class PactDAO {
         return null;
     }
 
+    @Override
     public List<Pact> getAllPacts() throws SQLException {
         List<Pact> pacts = new ArrayList<>();
         String selectQuery = "SELECT * FROM pact";
@@ -54,6 +57,7 @@ public class PactDAO {
         return pacts;
     }
 
+    @Override
     public void updatePact(Pact pact) throws SQLException {
         String updateQuery = "UPDATE pact SET creationDate = ?, payload = ? WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
@@ -64,6 +68,7 @@ public class PactDAO {
         }
     }
 
+    @Override
     public void deletePact(int pactId) throws SQLException {
         String deleteQuery = "DELETE FROM pact WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {

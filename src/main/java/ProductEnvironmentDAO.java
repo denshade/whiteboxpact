@@ -5,13 +5,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductEnvironmentDAO {
+public class ProductEnvironmentDAO implements ProductEnvironmentRepository {
     private Connection connection;
 
     public ProductEnvironmentDAO(Connection connection) {
         this.connection = connection;
     }
 
+    @Override
     public void createProductEnvironment(ProductEnvironment productEnvironment) throws SQLException {
         String insertQuery = "INSERT INTO productEnvironment (product, environment, version) VALUES (?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
@@ -22,6 +23,7 @@ public class ProductEnvironmentDAO {
         }
     }
 
+    @Override
     public ProductEnvironment getProductEnvironment(int productId, String environment) throws SQLException {
         String selectQuery = "SELECT * FROM productEnvironment WHERE product = ? AND environment = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
@@ -35,6 +37,7 @@ public class ProductEnvironmentDAO {
         return null;
     }
 
+    @Override
     public List<ProductEnvironment> getAllProductEnvironments(int productId) throws SQLException {
         List<ProductEnvironment> productEnvironments = new ArrayList<>();
         String selectQuery = "SELECT * FROM productEnvironment WHERE product = ?";
@@ -53,6 +56,7 @@ public class ProductEnvironmentDAO {
         return productEnvironments;
     }
 
+    @Override
     public void updateProductEnvironment(ProductEnvironment productEnvironment) throws SQLException {
         String updateQuery = "UPDATE productEnvironment SET version = ? WHERE product = ? AND environment = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
@@ -63,6 +67,7 @@ public class ProductEnvironmentDAO {
         }
     }
 
+    @Override
     public void deleteProductEnvironment(int productId, String environment) throws SQLException {
         String deleteQuery = "DELETE FROM productEnvironment WHERE product = ? AND environment = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {

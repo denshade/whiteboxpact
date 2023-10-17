@@ -6,13 +6,14 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SupportedPactDAO {
+public class SupportedPactDAO implements SupportedPactRepository {
     private Connection connection;
 
     public SupportedPactDAO(Connection connection) {
         this.connection = connection;
     }
 
+    @Override
     public void createSupportedPact(SupportedPact supportedPact) throws SQLException {
         String insertQuery = "INSERT INTO supportedPact (pactId, product, version, verifiedAt) VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
@@ -24,6 +25,7 @@ public class SupportedPactDAO {
         }
     }
 
+    @Override
     public SupportedPact getSupportedPactById(int pactId, int product) throws SQLException {
         String selectQuery = "SELECT * FROM supportedPact WHERE pactId = ? AND product = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
@@ -42,6 +44,7 @@ public class SupportedPactDAO {
         return null;
     }
 
+    @Override
     public List<SupportedPact> getAllSupportedPacts() throws SQLException {
         List<SupportedPact> supportedPacts = new ArrayList<>();
         String selectQuery = "SELECT * FROM supportedPact";
@@ -59,6 +62,7 @@ public class SupportedPactDAO {
         return supportedPacts;
     }
 
+    @Override
     public void updateSupportedPact(SupportedPact supportedPact) throws SQLException {
         String updateQuery = "UPDATE supportedPact SET version = ?, verifiedAt = ? WHERE pactId = ? AND product = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
@@ -70,6 +74,7 @@ public class SupportedPactDAO {
         }
     }
 
+    @Override
     public void deleteSupportedPact(int pactId, int product) throws SQLException {
         String deleteQuery = "DELETE FROM supportedPact WHERE pactId = ? AND product = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {

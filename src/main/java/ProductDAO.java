@@ -5,13 +5,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAO {
+public class ProductDAO implements ProductRepository {
     private Connection connection;
 
     public ProductDAO(Connection connection) {
         this.connection = connection;
     }
 
+    @Override
     public void createProduct(Product product) throws SQLException {
         String insertQuery = "INSERT INTO product (name) VALUES (?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
@@ -20,6 +21,7 @@ public class ProductDAO {
         }
     }
 
+    @Override
     public Product getProductById(int productId) throws SQLException {
         String selectQuery = "SELECT * FROM product WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
@@ -32,6 +34,7 @@ public class ProductDAO {
         return null;
     }
 
+    @Override
     public List<Product> getAllProducts() throws SQLException {
         List<Product> products = new ArrayList<>();
         String selectQuery = "SELECT * FROM product";
@@ -44,6 +47,7 @@ public class ProductDAO {
         return products;
     }
 
+    @Override
     public void updateProduct(Product product) throws SQLException {
         String updateQuery = "UPDATE product SET name = ? WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
@@ -53,6 +57,7 @@ public class ProductDAO {
         }
     }
 
+    @Override
     public void deleteProduct(int productId) throws SQLException {
         String deleteQuery = "DELETE FROM product WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
