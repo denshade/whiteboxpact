@@ -1,4 +1,7 @@
-package info.thelaboflieven;
+package info.thelaboflieven.sqldao;
+
+import info.thelaboflieven.ProductEnvironment;
+import info.thelaboflieven.ProductEnvironmentRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

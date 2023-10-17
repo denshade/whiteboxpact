@@ -1,4 +1,7 @@
-package info.thelaboflieven;
+package info.thelaboflieven.sqldao;
+
+import info.thelaboflieven.Pact;
+import info.thelaboflieven.PactRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PactDAO implements PactRepositry {
+public class PactDAO implements PactRepository {
     private Connection connection;
 
     public PactDAO(Connection connection) {

@@ -3,7 +3,7 @@ package info.thelaboflieven;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface PactRepositry {
+public interface PactRepository {
     void createPact(Pact pact) throws SQLException;
 
     Pact getPactById(int pactId) throws SQLException;

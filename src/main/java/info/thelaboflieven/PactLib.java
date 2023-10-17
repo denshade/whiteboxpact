@@ -1,23 +1,22 @@
 package info.thelaboflieven;
 
+import info.thelaboflieven.sqldao.*;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 public class PactLib {
+        private ProductRepository productDAO;
+        private ProductEnvironmentRepository productEnvironmentDAO;
+        private PactRepository pactDAO;
+        private SupportedPactRepository supportedPactDAO;
 
-        private Connection connection;
-        private ProductDAO productDAO;
-        private ProductEnvironmentDAO productEnvironmentDAO;
-        private PactDAO pactDAO;
-        private SupportedPactDAO supportedPactDAO;
-
-        public PactLib(Connection connection) {
-            this.connection = connection;
-            productDAO = new ProductDAO(connection);
-            productEnvironmentDAO = new ProductEnvironmentDAO(connection);
-            pactDAO = new PactDAO(connection);
-            supportedPactDAO = new SupportedPactDAO(connection);
+        public PactLib(DAOFactory daoFactory) {
+            productDAO = daoFactory.getProductDAO();
+            productEnvironmentDAO = daoFactory.getProductEnvironmentDAO();
+            pactDAO = daoFactory.getPactDAO();
+            supportedPactDAO = daoFactory.getSupportedPactDAO();
         }
 
         // info.thelaboflieven.Product methods
