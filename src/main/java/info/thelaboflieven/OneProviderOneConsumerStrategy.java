@@ -1,3 +1,5 @@
+package info.thelaboflieven;
+
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;

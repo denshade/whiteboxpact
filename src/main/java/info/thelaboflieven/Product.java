@@ -1,3 +1,5 @@
+package info.thelaboflieven;
+
 public class Product {
     private int id;
     private String name;
@@ -25,7 +27,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "info.thelaboflieven.Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

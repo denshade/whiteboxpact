@@ -1,7 +1,7 @@
+package info.thelaboflieven;
+
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 public class PactLib {
@@ -20,7 +20,7 @@ public class PactLib {
             supportedPactDAO = new SupportedPactDAO(connection);
         }
 
-        // Product methods
+        // info.thelaboflieven.Product methods
         public void createProduct(Product product) throws SQLException {
             productDAO.createProduct(product);
         }
@@ -41,7 +41,7 @@ public class PactLib {
             productDAO.deleteProduct(productId);
         }
 
-        // ProductEnvironment methods
+        // info.thelaboflieven.ProductEnvironment methods
         public void createProductEnvironment(ProductEnvironment productEnvironment) throws SQLException {
             productEnvironmentDAO.createProductEnvironment(productEnvironment);
         }
@@ -62,7 +62,7 @@ public class PactLib {
             productEnvironmentDAO.deleteProductEnvironment(productId, environment);
         }
 
-        // Pact methods
+        // info.thelaboflieven.Pact methods
         public void createPact(Pact pact) throws SQLException {
             pactDAO.createPact(pact);
         }
@@ -83,7 +83,7 @@ public class PactLib {
             pactDAO.deletePact(pactId);
         }
 
-        // SupportedPact methods
+        // info.thelaboflieven.SupportedPact methods
         public void createSupportedPact(SupportedPact supportedPact) throws SQLException {
             supportedPactDAO.createSupportedPact(supportedPact);
         }

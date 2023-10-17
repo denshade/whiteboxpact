@@ -1,3 +1,5 @@
+package info.thelaboflieven;
+
 public class ProductEnvironment {
     private int product;
     private String environment;
@@ -35,7 +37,7 @@ public class ProductEnvironment {
 
     @Override
     public String toString() {
-        return "ProductEnvironment{" +
+        return "info.thelaboflieven.ProductEnvironment{" +
                 "product=" + product +
                 ", environment='" + environment + '\'' +
                 ", version='" + version + '\'' +

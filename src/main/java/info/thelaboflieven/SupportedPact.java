@@ -1,3 +1,5 @@
+package info.thelaboflieven;
+
 import java.sql.Timestamp;
 
 public class SupportedPact {
@@ -47,7 +49,7 @@ public class SupportedPact {
 
     @Override
     public String toString() {
-        return "SupportedPact{" +
+        return "info.thelaboflieven.SupportedPact{" +
                 "pactId=" + pactId +
                 ", product=" + product +
                 ", version='" + version + '\'' +

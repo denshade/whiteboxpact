@@ -1,3 +1,5 @@
+package info.thelaboflieven;
+
 import org.apache.commons.cli.*;
 
 
@@ -38,7 +40,7 @@ public class PactCLI {
             // Use the facade to interact with the database
             // Example:
             // try {
-            //     Product product = new Product(1, "Sample Product");
+            //     info.thelaboflieven.Product product = new info.thelaboflieven.Product(1, "Sample info.thelaboflieven.Product");
             //     facade.createProduct(product);
             // } catch (SQLException e) {
             //     System.err.println("Error: " + e.getMessage());

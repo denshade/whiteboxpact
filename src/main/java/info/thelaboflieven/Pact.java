@@ -1,3 +1,5 @@
+package info.thelaboflieven;
+
 import java.sql.Timestamp;
 
 public class Pact {
@@ -37,7 +39,7 @@ public class Pact {
 
     @Override
     public String toString() {
-        return "Pact{" +
+        return "info.thelaboflieven.Pact{" +
                 "id=" + id +
                 ", creationDate=" + creationDate +
                 ", payload='" + payload + '\'' +

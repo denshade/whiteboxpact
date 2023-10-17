@@ -1,3 +1,5 @@
+package info.thelaboflieven;
+
 import java.sql.SQLException;
 import java.util.List;
 
